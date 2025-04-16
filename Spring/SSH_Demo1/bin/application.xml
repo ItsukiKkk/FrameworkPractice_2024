@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+    <property name="configLocation" value="classpath:hibernate.cfg.xml"/>
+</bean>
+<!-- HibernateTemplate配置 -->
+<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+</bean>
+
+
+<bean id="userDao" class="com.seiryo.dao.imp.UserDaoImp">
+    <property name="hibernateTemplate" ref="hibernateTemplate"/>
+</bean>
+<bean id="userService" class="com.seiryo.service.imp.UserServiceImp">
+    <property name="userDao" ref="userDao"/>
+</bean>
+
+<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+</bean>
+
+</beans>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="data" class="com.seiryo.data.Data">
+		<property name="a">
+			<array>
+				<value>1</value>
+				<value>1</value>
+				<value>1</value>
+			</array>
+		</property>
+		<property name="list">
+			<list >
+				<value>asd</value>
+				<value>asd</value>
+			</list>
+		</property>
+		<property name="map">
+			<map>
+				<entry key="1" value="string"></entry>
+				<entry key="2" value="string"></entry>
+			</map>
+		</property>
+		<property name="properties">
+			<props>
+				<prop key="1">张三</prop>
+				<prop key="2">张4</prop>
+				<prop key="3">张5</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

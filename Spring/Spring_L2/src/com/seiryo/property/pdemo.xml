@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="user" class="com.seiryo.property.User">
+		<property name="userName" value="hhh"></property>
+		<property name="userDetail" ref="userDetail"></property>
+	</bean>
+	<bean id="user1" class="com.seiryo.property.User">
+		<property name="userName" value="#{user.userName?.toUpperCase()}"></property>
+		<property name="id" value="#{T(java.lang.Math).PI}"></property>	
+	</bean>
+	<bean id="userDetail" class="com.seiryo.property.UserDetail">
+		<property name="email" value="123@qq.com"></property>
+	</bean>
+</beans>

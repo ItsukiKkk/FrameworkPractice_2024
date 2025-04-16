@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="userServiceImp" class="com.seiryo.di.UserServiceImp">
+		<property name="userDao" ref="userDaoId"></property>
+		<property name="userDetail" ref="userDetail"></property>
+	</bean>
+	<bean id="userDaoId" class="com.seiryo.di.UserDaoImp"></bean>
+	<bean id="userDetail" class="com.seiryo.di.UserDetail">
+		<property name="email" value="123@qq.com"></property>
+	</bean>
+	
+</beans>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seiryo.mapper.UserMapper">
+	<insert id="insert">
+		insert users(user_name,pwd,gender,email) values(#{param1},#{param2},#{param3},#{param4})
+	</insert>
+	<select id="selectTrim" parameterType="User" resultType="User">
+		select * from users 
+		<where>
+			<trim prefixOverrides="and">
+				<if test="userName != null and userName != ''">
+					and user_name = #{userName}
+				</if>
+				<if test="pwd != null and pwd != ''">
+					and pwd = #{pwd}
+				</if>
+				<if test="gender != null and gender != ''">
+					and gender = #{gender}
+				</if>
+				<if test="email != null and email != ''">
+					and email = #{email}
+				</if>
+			</trim>
+		</where>
+	</select>
+	<update id="update">
+	 	update users
+		<set>
+			<trim suffixOverrides="," >
+				<if test="userName != null and userName != ''">
+					user_name = #{userName},
+				</if>
+				<if test="pwd != null and pwd != ''">
+					pwd = #{pwd},
+				</if>
+				<if test="gender != null and gender != ''">
+					gender = #{gender},
+				</if>
+				<if test="email != null and email != ''">
+					email = #{email},
+				</if>
+			</trim>
+			where id = #{id}
+		</set>
+	</update>
+	<delete id="delete">
+		<foreach collection="array" item="id">
+		delete from users where id = #{id}
+		</foreach>
+	</delete>
+	<select id="selectById" resultType="User">
+		select * from users where id in
+		<foreach collection="array" item="id" close=")" open="(" separator=",">
+			 #{id}
+		</foreach>
+	</select>
+</mapper>

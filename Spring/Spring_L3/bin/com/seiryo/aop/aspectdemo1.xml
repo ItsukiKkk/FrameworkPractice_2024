@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="userServiceId" class="com.seiryo.aop.UserServiceImp"></bean>
+	<bean id="myAspectId" class="com.seiryo.aop.MyAspect"></bean>
+	<bean id="proxyServiceId" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interfaces"  value="com.seiryo.aop.UserService"></property>
+		<property name="target"  ref="userServiceId"></property>
+		<property name="interceptorNames"  value="myAspectId"></property>
+		
+	</bean>
+</beans>

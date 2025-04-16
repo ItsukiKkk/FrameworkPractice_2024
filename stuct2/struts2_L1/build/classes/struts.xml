@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+<constant name="struts.devMode" value="true" />
+	<package name="package" extends="struts-default" namespace="/">
+		<global-results>
+			<result name="success">/success.jsp</result>
+		</global-results>
+		<action name="action1" class="com.seiryo.action.FirstAction" method="method">
+		</action>
+		<action name="action2" class="com.seiryo.action.SecondAction" method="method">	
+		</action>
+		<action name="redirectAction"  class="com.seiryo.action.ThirdAction" method="method">	
+			<result name="success" type="redirectAction">action1</result>
+		</action>
+		<action name="redirect"  class="com.seiryo.action.ThirdAction" method="method">	
+			<result name="success" type="redirect">success.jsp</result>
+		</action>
+		<action name="ChainAction"  class="com.seiryo.action.ThirdAction" method="method">	
+			<result name="success" type="chain">action1</result>
+		</action>
+		
+		<action name="sendMessage"  class="com.seiryo.action.Request" method="method">
+		</action>
+	</package>
+</struts>
