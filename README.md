@@ -1,2 +1,2 @@
-Record what I learnd from classes.
+Recording what I learnd from classes.
 Include Spring/Hibernate/Mybatis etc.
